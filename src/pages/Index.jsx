@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Heading, Text, Button, Stack, Icon, useColorModeValue, createIcon, Container, SimpleGrid, Image, Link, Input, useToast } from "@chakra-ui/react";
+import { Box, Heading, Text, Button, Stack, Icon, Container, SimpleGrid, Image, Input, useToast, Grid, GridItem } from "@chakra-ui/react";
 import { FaDatabase, FaChartLine, FaShieldAlt, FaTags } from "react-icons/fa";
 
 const features = [
@@ -40,79 +40,71 @@ const Index = () => {
   };
 
   return (
-    <Container maxW={"7xl"}>
-      <Stack align={"center"} spacing={{ base: 8, md: 10 }} py={{ base: 20, md: 28 }} direction={{ base: "column", md: "row" }}>
-        <Stack flex={1} spacing={{ base: 5, md: 10 }}>
-          <Heading as="h1" size="2xl" fontWeight="extrabold" mb={4}>
-            Streamline Your ML Workflow with{" "}
-            <Text as="span" color="blue.500">
-              ALigned
-            </Text>
+    <>
+      <Box bg="purple.600" color="white" py={48} textAlign="center">
+        <Container maxW="3xl">
+          <Heading as="h1" size="3xl" mb={6}>
+            Streamline Your ML Workflow with ALigned
           </Heading>
-          <Text fontSize="xl" color="gray.500" maxW="2xl" mx="auto" mb={6}>
+          <Text fontSize="xl" mb={8}>
             The all-in-one platform for advanced feature management, data lineage visualization, and real-time model monitoring.
           </Text>
-          <Stack direction={{ base: "column", md: "row" }} spacing={4} justifyContent="center">
-            <Button colorScheme="blue" size="lg" height="14" px="8" fontSize="md">
-              Get Started
-            </Button>
-            <Button variant="outline" size="lg" height="14" px="8" fontSize="md" as={Link} href="#waitlist">
-              Join Waitlist
-            </Button>
-          </Stack>
-        </Stack>
-        <Box pos="relative" w="full" h={{ base: 64, md: "400px" }} borderRadius="lg" overflow="hidden" boxShadow="2xl">
-          <Image src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80" alt="Hero image" objectFit="cover" w="full" h="full" />
-        </Box>
-      </Stack>
+          <Button colorScheme="white" color="purple.600" size="lg" height={16} px={12} fontSize="xl">
+            Get Started
+          </Button>
+        </Container>
+      </Box>
 
-      <Box py={16} bg="gray.50">
+      <Box py={24}>
         <Container maxW="7xl">
-          <Box textAlign="center" mb={12}>
-            <Heading as="h2" size="xl" mb={4}>
-              Powerful Features to Supercharge Your ML Workflow
-            </Heading>
-            <Text fontSize="lg" color="gray.600" maxW="xl" mx="auto">
-              ALigned offers a suite of advanced tools to streamline your machine learning pipeline from data to deployment.
-            </Text>
-          </Box>
-          <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} spacing={8}>
+          <Grid templateColumns={{ base: "1fr", lg: "repeat(3, 1fr)" }} gap={12}>
             {features.map((feature) => (
-              <Box key={feature.title} bg="white" p={6} rounded="lg" textAlign="center" shadow="md">
-                <Icon as={feature.icon} w={12} h={12} color="blue.500" mb={4} mx="auto" />
-                <Heading as="h3" size="md" fontWeight="bold" mb={2}>
+              <GridItem key={feature.title} textAlign="center">
+                <Icon as={feature.icon} w={20} h={20} color="purple.500" mb={6} mx="auto" />
+                <Heading as="h3" size="lg" mb={4}>
                   {feature.title}
                 </Heading>
-                <Text fontSize="md" color="gray.600">
+                <Text fontSize="lg" color="gray.600">
                   {feature.text}
                 </Text>
-              </Box>
+              </GridItem>
             ))}
+          </Grid>
+        </Container>
+      </Box>
+
+      <Box bg="gray.50" py={24}>
+        <Container maxW="7xl">
+          <SimpleGrid columns={6} spacing={8} alignItems="center">
+            <Image src="/logo1.png" alt="Logo 1" />
+            <Image src="/logo2.png" alt="Logo 2" />
+            <Image src="/logo3.png" alt="Logo 3" />
+            <Image src="/logo4.png" alt="Logo 4" />
+            <Image src="/logo5.png" alt="Logo 5" />
+            <Image src="/logo6.png" alt="Logo 6" />
           </SimpleGrid>
         </Container>
       </Box>
 
-      <Box id="waitlist" py={16}>
-        <Container maxW="3xl" textAlign="center">
-          <Heading as="h2" size="2xl" mb={4}>
-            Get Early Access to ALigned
+      <Box id="waitlist" py={24} textAlign="center">
+        <Container maxW="xl">
+          <Heading as="h2" size="2xl" mb={6}>
+            Get Early Access
           </Heading>
-          <Text fontSize="xl" color="gray.600" mb={8}>
-            Be the first to revolutionize your ML workflow. Join our waitlist now!
+          <Text fontSize="xl" mb={8}>
+            Join our waitlist to be the first to revolutionize your ML workflow.
           </Text>
-          <Box maxW="md" mx="auto">
-            <form onSubmit={handleSubmit}>
-              <Stack direction={{ base: "column", md: "row" }} spacing={4} alignItems="center" justifyContent="center">
-                <Input type="email" placeholder="Enter your email" size="lg" borderRadius="full" focusBorderColor="blue.500" required />
-                <Button type="submit" colorScheme="blue" size="lg" borderRadius="full" px={8} height={14} fontSize="md">
-                  Join Waitlist
-                </Button>
-              </Stack>
-            </form>
-          </Box>
+          <form onSubmit={handleSubmit}>
+            <Stack direction="row" spacing={4} justifyContent="center">
+              <Input type="email" placeholder="Enter your email" size="lg" borderRadius="full" focusBorderColor="purple.500" required />
+              <Button type="submit" colorScheme="purple" size="lg" borderRadius="full" px={12} height={16} fontSize="xl">
+                Join Waitlist
+              </Button>
+            </Stack>
+          </form>
         </Container>
       </Box>
-    </Container>
+    </>
   );
 };
 
