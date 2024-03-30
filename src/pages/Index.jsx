@@ -43,81 +43,74 @@ const Index = () => {
     <Container maxW={"7xl"}>
       <Stack align={"center"} spacing={{ base: 8, md: 10 }} py={{ base: 20, md: 28 }} direction={{ base: "column", md: "row" }}>
         <Stack flex={1} spacing={{ base: 5, md: 10 }}>
-          <Heading lineHeight={1.1} fontWeight={600} fontSize={{ base: "3xl", sm: "4xl", lg: "6xl" }}>
-            <Text as={"span"} color={"blue.400"}>
+          <Heading as="h1" size="2xl" fontWeight="extrabold" mb={4}>
+            Streamline Your ML Workflow with{" "}
+            <Text as="span" color="blue.500">
               ALigned
             </Text>
-            <br />
-            <Text as={"span"} color={"gray.600"}>
-              Machine Learning products made simple
-            </Text>
           </Heading>
-          <Text color={"gray.500"}>Redefine Machine Learning Data Management with Aligned: A Tool for Advanced Feature Management, Data Lineage Visualization, and Real-Time Model Monitoring.</Text>
-          <Stack spacing={{ base: 4, sm: 6 }} direction={{ base: "column", sm: "row" }}>
-            <Button rounded={"full"} size={"lg"} fontWeight={"normal"} px={6} colorScheme={"blue"} bg={"blue.400"} _hover={{ bg: "blue.500" }}>
-              Get started
+          <Text fontSize="xl" color="gray.500" maxW="2xl" mx="auto" mb={6}>
+            The all-in-one platform for advanced feature management, data lineage visualization, and real-time model monitoring.
+          </Text>
+          <Stack direction={{ base: "column", md: "row" }} spacing={4} justifyContent="center">
+            <Button colorScheme="blue" size="lg" height="14" px="8" fontSize="md">
+              Get Started
             </Button>
-            <Link href="#waitlist">
-              <Button rounded={"full"} size={"lg"} fontWeight={"normal"} px={6}>
-                Join Waitlist
-              </Button>
-            </Link>
+            <Button variant="outline" size="lg" height="14" px="8" fontSize="md" as={Link} href="#waitlist">
+              Join Waitlist
+            </Button>
           </Stack>
         </Stack>
-        <Box pos={"relative"} height={"300px"} rounded={"2xl"} boxShadow={"2xl"} width={"full"} overflow={"hidden"}>
-          <Image alt={"Hero Image"} fit={"cover"} align={"center"} w={"100%"} h={"100%"} src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1MDcxMzJ8MHwxfHNlYXJjaHwxfHxtYWNoaW5lJTIwbGVhcm5pbmclMjBkYXRhJTIwdmlzdWFsaXphdGlvbnxlbnwwfHx8fDE3MTE4MjgwODd8MA&ixlib=rb-4.0.3&q=80&w=1080" />
+        <Box pos="relative" w="full" h={{ base: 64, md: "400px" }} borderRadius="lg" overflow="hidden" boxShadow="2xl">
+          <Image src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80" alt="Hero image" objectFit="cover" w="full" h="full" />
         </Box>
       </Stack>
 
-      <Box p={4}>
-        <Stack spacing={4} as={Container} maxW={"3xl"} textAlign={"center"}>
-          <Heading fontSize={"3xl"}>Powerful Features</Heading>
-          <Text color={"gray.600"} fontSize={"xl"}>
-            ALigned provides a comprehensive set of features to streamline your machine learning workflow.
-          </Text>
-        </Stack>
-
-        <Container maxW={"6xl"} mt={10}>
-          <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} spacing={10}>
+      <Box py={16} bg="gray.50">
+        <Container maxW="7xl">
+          <Box textAlign="center" mb={12}>
+            <Heading as="h2" size="xl" mb={4}>
+              Powerful Features to Supercharge Your ML Workflow
+            </Heading>
+            <Text fontSize="lg" color="gray.600" maxW="xl" mx="auto">
+              ALigned offers a suite of advanced tools to streamline your machine learning pipeline from data to deployment.
+            </Text>
+          </Box>
+          <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} spacing={8}>
             {features.map((feature) => (
-              <Stack key={feature.title} align={"center"}>
-                <Icon as={feature.icon} w={10} h={10} color={"blue.400"} />
-                <Text fontWeight={600}>{feature.title}</Text>
-                <Text color={"gray.600"}>{feature.text}</Text>
-              </Stack>
+              <Box key={feature.title} bg="white" p={6} rounded="lg" textAlign="center" shadow="md">
+                <Icon as={feature.icon} w={12} h={12} color="blue.500" mb={4} mx="auto" />
+                <Heading as="h3" size="md" fontWeight="bold" mb={2}>
+                  {feature.title}
+                </Heading>
+                <Text fontSize="md" color="gray.600">
+                  {feature.text}
+                </Text>
+              </Box>
             ))}
           </SimpleGrid>
         </Container>
       </Box>
 
-      <Box id="waitlist" bg={useColorModeValue("gray.100", "gray.700")} p={6}>
-        <Stack spacing={4} as={Container} maxW={"3xl"} textAlign={"center"}>
-          <Heading fontSize={"3xl"}>Join the Waitlist</Heading>
-          <Text fontSize={"xl"}>Be among the first to experience the power of ALigned. Join our waitlist today!</Text>
-          <Stack direction={"column"} spacing={3} align={"center"} alignSelf={"center"} position={"relative"}>
+      <Box id="waitlist" py={16}>
+        <Container maxW="3xl" textAlign="center">
+          <Heading as="h2" size="2xl" mb={4}>
+            Get Early Access to ALigned
+          </Heading>
+          <Text fontSize="xl" color="gray.600" mb={8}>
+            Be the first to revolutionize your ML workflow. Join our waitlist now!
+          </Text>
+          <Box maxW="md" mx="auto">
             <form onSubmit={handleSubmit}>
-              <Input
-                placeholder={"Your email address"}
-                bg={useColorModeValue("white", "gray.800")}
-                border={0}
-                _focus={{
-                  bg: useColorModeValue("white", "gray.800"),
-                }}
-              />
-              <Button
-                colorScheme={"blue"}
-                bg={"blue.400"}
-                px={6}
-                _hover={{
-                  bg: "blue.500",
-                }}
-                type="submit"
-              >
-                Join Waitlist
-              </Button>
+              <Stack direction={{ base: "column", md: "row" }} spacing={4} alignItems="center" justifyContent="center">
+                <Input type="email" placeholder="Enter your email" size="lg" borderRadius="full" focusBorderColor="blue.500" required />
+                <Button type="submit" colorScheme="blue" size="lg" borderRadius="full" px={8} height={14} fontSize="md">
+                  Join Waitlist
+                </Button>
+              </Stack>
             </form>
-          </Stack>
-        </Stack>
+          </Box>
+        </Container>
       </Box>
     </Container>
   );
